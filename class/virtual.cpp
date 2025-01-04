@@ -7,6 +7,8 @@ public:
 	virtual void getAge() {printf("father age is 50\n");}
 	//virtual void getName() = 0;
 	void say() {printf("hello father\n");}
+	father() {printf("this is father construct\n");}
+	virtual ~father() {printf("this is father destruct\n");}
 };
 
 class son : public father {
@@ -14,6 +16,8 @@ public:
 	void getAge() {printf("son age is 20\n");}
 	void getName() {printf("son name is jerry\n");};
 	void say() {printf("hello son\n");}
+	son() {printf("this is son construct\n");}
+	~son() {printf("this is son destruct\n");}
 private:
 	int m_age;
 	string m_name;
@@ -51,6 +55,7 @@ int main() {
 	father* p = new son();
 	p->getAge();  //son age is 20
 	p->say();     //hello father
+	delete p;
 	return 0;
 }
 
