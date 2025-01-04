@@ -43,6 +43,7 @@ int main() {
 //-----------------------------------------------------
 #if 1
 //友元函数：class1的成员函数在class2中加上friend和作用域，那么class1的成员函数可以访问class2的私有成员
+//友元类：  class1在class2中加上friend，那么class1的所有成员函数都可以访问class2的私有成员
 class father;
 class son {
 public:
@@ -50,7 +51,9 @@ public:
 };
 
 class father {
-	friend void son::visit(father *f);  //son::visit声明为father的友元函数，那么son::visit可以访问father的私有成员
+	//friend void son::visit(father *f);  //son::visit声明为father的友元函数，那么son::visit可以访问father的私有成员
+	//或者
+	friend class son;  //son声明为father的友元类，那么son的所有成员函数都能访问father的私有成员
 public:
 	father(int age) : m_age(age) {}
 private:
